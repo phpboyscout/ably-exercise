@@ -1,0 +1,36 @@
+run:
+  skip-files:
+    - ".*\\.pb(\\..+)\\.go$"
+
+linters:
+#  disable-all: true
+#  enable-all: true
+  enable:
+    - megacheck
+    - godot
+    - gofmt
+    - gci
+    - whitespace
+    - revive
+    - dupl
+    - nlreturn
+    - ifshort
+    - govet
+    - gosec
+    - exportloopref
+  disable:
+    - maligned
+    - scopelint
+  presets:
+    - bugs
+    - unused
+    - performance
+    - error
+  fast: false
+
+
+linters-settings:
+  gci:
+    local-prefixes: exercise
+  goimports:
+    local-prefixes: exercise

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package ably.v1;
+
+option go_package = "ably/v1";
+
+service Service {
+  // Start the stream of numbers
+  rpc Doubler (Request) returns (stream Response) {}
+  rpc Random (Request) returns (stream Response) {}
+}
+
+message Request {
+  int64 qty = 1; // the number of values to return
+  int64 seed = 2; // optional: the number to initialise the sequence with
+}
+
+message Response {
+  bytes value = 1; // the generated number as bytes to allow for numbers exceeding bit limits
+  bytes checksum = 2; // the sum of all of all values in the generated sequence
+}
